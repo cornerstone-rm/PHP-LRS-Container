@@ -13,6 +13,7 @@ services:
       - ./www:/var/www
       - ./sites:/etc/nginx/conf.d
       - ./logs:/var/log/supervisor
+      - ./certs:/etc/nginx/certs
 
   mysql:
     image: mysql
