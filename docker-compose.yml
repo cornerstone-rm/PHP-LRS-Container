@@ -7,7 +7,9 @@ services:
       - "443:443"
       - "9000:9000"
     links:
-      - mysql:mysql
+      #- mysql:mysql
+      #- redis:redis
+      - mongo:mongo
       - memcached:memcached
     volumes:
       - ./www:/var/www
@@ -15,20 +17,36 @@ services:
       - ./logs:/var/log/supervisor
       - ./certs:/etc/nginx/certs
 
-  mysql:
-    image: mysql
+  mongo:
+    image: mongo
     ports:
-      - "3306:3306"
+      - "27017:27017"
     volumes_from:
-      - mysqlData
-    environment:
-      MYSQL_ROOT_PASSWORD: password
+      - mongoData
 
-  mysqlData:
-    image: mysql
+  mongoData:
+    image: mongo
     entrypoint: /bin/bash
 
   memcached:
     image: memcached
     ports:
       - "11211:11211"
+
+  # redis:
+  #   image: redis
+  #   ports:
+  #     - "6379:6379"
+
+  # mysql:
+  #   image: mysql
+  #   ports:
+  #     - "3306:3306"
+  #   volumes_from:
+  #     - mysqlData
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: password
+
+  # mysqlData:
+  #   image: mysql
+  #   entrypoint: /bin/bash
