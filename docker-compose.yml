@@ -36,7 +36,8 @@ services:
 
   lxHive:
     build: lxHive/.
-    volumes_from: nginx
+    volumes_from:
+      - nginx
 
   # redis:
   #   image: redis
