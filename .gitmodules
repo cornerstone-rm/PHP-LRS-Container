@@ -1,0 +1,3 @@
+[submodule "lxHive"]
+	path = lxHive
+	url = https://github.com/cornerstone-rm/lxHive.git

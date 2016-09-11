@@ -11,6 +11,7 @@ services:
       #- redis:redis
       - mongo:mongo
       - memcached:memcached
+      - lxHive:lxHive
     volumes:
       - ./www:/var/www
       - ./sites:/etc/nginx/conf.d
@@ -32,6 +33,10 @@ services:
     image: memcached
     ports:
       - "11211:11211"
+
+  lxHive:
+    build: lxHive/.
+    volumes_from: nginx
 
   # redis:
   #   image: redis
