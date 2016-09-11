@@ -20,6 +20,7 @@ RUN apt-get update && apt-get install -my \
   php5-fpm \
   php5-gd \
   php5-memcached \
+  php5-mongo \
   php5-mysql \
   php5-mcrypt \
   php5-sqlite \

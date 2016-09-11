@@ -16,6 +16,8 @@ services:
       - ./sites:/etc/nginx/conf.d
       - ./logs:/var/log/supervisor
       - ./certs:/etc/nginx/certs
+    volumes_from:
+      - lxhive
 
   mongo:
     image: mongo
@@ -35,8 +37,6 @@ services:
 
   lxhive:
     build: lxHive/.
-    volumes_from:
-      - front
 
   # redis:
   #   image: redis
