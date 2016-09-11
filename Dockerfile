@@ -75,7 +75,7 @@ RUN chmod 400 /var/nginx/certs/default.key
 # Volumes
 ################################################################################
 
-VOLUME ["/var/www", "/etc/nginx/conf.d", "/var/nginx/certs"]
+VOLUME ["/var/www/default", "/etc/nginx/conf.d", "/var/nginx/certs"]
 
 ################################################################################
 # Ports
