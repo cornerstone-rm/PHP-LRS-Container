@@ -1,7 +1,18 @@
 server {
+  listen 80;
+  listen 443 ssl;
+
   server_name default;
   root        /var/www/default;
   index       index.php;
+
+  ssl_session_timeout  5m;
+  ssl_protocols  SSLv2 SSLv3 TLSv1;
+  ssl_ciphers  ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP;
+  ssl_prefer_server_ciphers   on;
+
+  ssl_certificate        /var/nginx/certs/default.cert;
+  ssl_certificate_key    /var/nginx/certs/default.key;
 
   client_max_body_size 100M;
   fastcgi_read_timeout 1800;

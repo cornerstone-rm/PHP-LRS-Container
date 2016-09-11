@@ -52,11 +52,29 @@ COPY conf/nginx.conf /etc/nginx/
 COPY conf/supervisord.conf /etc/supervisor/conf.d/
 COPY conf/php.ini /etc/php5/fpm/conf.d/40-custom.ini
 
+
+################################################################################
+# SSL
+################################################################################
+
+RUN mkdir -p /var/nginx/certs
+
+RUN openssl req \
+    -x509 \
+    -newkey rsa:4096 \
+    -days 365 \
+    -nodes \
+    -subj "/C=US/ST=Denial/L=Springfield/O=Dis/CN=www.cemsites.com" \
+    -keyout /var/nginx/certs/default.key \
+    -out /var/nginx/certs/default.cert
+
+RUN chmod 400 /var/nginx/certs/default.key
+
 ################################################################################
 # Volumes
 ################################################################################
 
-VOLUME ["/var/www", "/etc/nginx/conf.d"]
+VOLUME ["/var/www", "/etc/nginx/conf.d", "/var/nginx/certs"]
 
 ################################################################################
 # Ports
