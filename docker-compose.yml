@@ -9,7 +9,7 @@ services:
     links:
       #- mysql:mysql
       #- redis:redis
-      - mongo:mongo
+      - mongo:mongodb
       - memcached:memcached
     volumes:
       #- ./www:/var/www
